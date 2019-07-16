@@ -19,12 +19,12 @@ set(LibName gfx_spirvcross)
 project(${LibName})
 
 set(Interface
-		barrier.hpp
-		external_interface.h
-		image.hpp
-		internal_interface.hpp
-		sampler.hpp
-		thread_group.hpp
+		../spirvcross/barrier.hpp
+		../spirvcross/external_interface.h
+		../spirvcross/image.hpp
+		../spirvcross/internal_interface.hpp
+		../spirvcross/sampler.hpp
+		../spirvcross/thread_group.hpp
 		)
 
 set(Src
@@ -47,10 +47,10 @@ set(Src
 		spirv_cross_util.cpp
 		spirv_cross_util.hpp
 		spirv_glsl.cpp
-		spirv_glsl.hpp
 		spirv_hlsl.cpp
-		spirv_hlsl.hpp
 		spirv_msl.cpp
+		spirv_glsl.hpp
+		spirv_hlsl.hpp
 		spirv_msl.hpp
 		spirv_parser.cpp
 		spirv_parser.hpp
@@ -61,3 +61,4 @@ set(Deps
 		)
 
 ADD_LIB(${LibName} "${Interface}" "${Src}" "${Deps}")
+target_include_directories(${LibName} PUBLIC src) # for shaderc
